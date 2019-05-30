@@ -1,4 +1,4 @@
-source 'https://github.com/roxiemobile/static-cocoa-frameworks.ios.git'
+#source 'https://github.com/roxiemobile/static-cocoa-frameworks.ios.git'
 
 platform :ios, '9.0'
 use_frameworks!
@@ -11,12 +11,18 @@ def pod_from(name, *args)
 end
 
 def inject_shared_dependencies_1
-  pod_from 'SwiftyJSON', '~> 4.2.0'
-  pod_from 'SwiftCommons/Data', '~> 1.3.1'
+  pod 'SwiftyJSON', '~> 5.0.0'
+  pod 'SwiftCommonsAbstractions', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
+  pod 'SwiftCommonsConcurrent', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
+  pod 'SwiftCommonsData', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
+  pod 'SwiftCommonsExtensions', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
+  pod 'SwiftCommonsLang', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
+  pod 'Dispatch', :git => 'https://github.com/MamuninaNV/Dispatch.git', :branch => 'hotfix/2.0.4-patch.1'
+  pod 'CryptoSwift', '~> 1.0.0'
 end
 
 def inject_shared_dependencies_2
-  pod_from 'Alamofire', '~> 4.8.1'
+  pod 'Alamofire', :git => 'https://github.com/MamuninaNV/Alamofire.git', :branch => 'feature/RMCMT-108'
 end
 
 
@@ -33,7 +39,7 @@ target 'NetworkingApi.Helpers' do
 
   # Dependencies
   inject_shared_dependencies_2
-  pod_from 'SwiftCommons/Logging', '~> 1.3.1'
+  pod 'SwiftCommonsLogging', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
 end
 
 
@@ -41,7 +47,7 @@ target 'NetworkingApi.Http' do
   project '../RoxieMobile.NetworkingApi/Sources/Http/NetworkingApi.Http.xcodeproj'
 
   # Dependencies
-  pod_from 'SwiftCommons/Diagnostics', '~> 1.3.1'
+  pod 'SwiftCommonsDiagnostics', :git => 'https://github.com/MamuninaNV/swift-commons.ios.git', :branch => 'feature/RMCMT-102'
 end
 
 
